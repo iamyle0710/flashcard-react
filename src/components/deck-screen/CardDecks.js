@@ -8,7 +8,7 @@ const CardDecks = ({data}) => {
     const renderList = () => {
         return (
             <div id='choices'>
-                {data.map((deck, index) => <CardDeck key={index} name={deck.title}></CardDeck>)}
+                {data.map((deck, index) => <CardDeck key={index} deck={deck}></CardDeck>)}
             </div>
         )   
     }
