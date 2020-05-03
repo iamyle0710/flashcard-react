@@ -1,0 +1,18 @@
+#card-decks .choice{
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border: none;
+    border-bottom: 2px solid #d2d2d2;
+    box-sizing: border-box;
+    font-size: 1.5em;
+    height: 2.5em;
+    padding-left: 0.75em;
+    width: 100%;
+    cursor: pointer;
+}
+
+#card-decks .choice:hover{
+    background-color: #b79aff;
+    color: #fff;
+}
