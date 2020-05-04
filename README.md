@@ -1,3 +1,24 @@
+# Flashcard
+## Overall behavior 
+- The user clicks or taps the flashcard to toggle between the word and definition.
+- If the user got the flashcard correct:
+    - The user drags and releases it to the right side of the screen.
+- If the user got the flashcard wrong:
+    - The user drags and releases it to the left side of the screen.
+
+
+## Code Description
+- `src`: 
+    - `actions`: The MenuScreen object represents the menu screen of the application. From here, users can choose a flashcard deck to review.
+    - `components`: components to render deck menu, flashcards and result
+    - `reducers`: reducer to contain the state of the application
+    - `data.js`: flashcard data
+    - `types.js`: constant types used as mapping between application and redux
+    - `index.js`: start point of the application
+
+## Reference 
+- https://web.stanford.edu/class/archive/cs/cs193x/cs193x.1176/homework/3-flashcards#implementation-menu-screen
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
