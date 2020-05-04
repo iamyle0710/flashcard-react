@@ -2,21 +2,27 @@ import React, { useState, useCallback} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './Flashcards.css';
-import { updateStudyResult, updateSlidingStatus } from '../../actions';
+import { updateStudyResult, updateSlidingStatus, setScreen } from '../../actions';
+import { RESULT_SCREEN } from '../../types';
 import Flashcard from './Flashcard';
 
 function Flashcards({cards}){
 
     const dispatch = useDispatch();
     const [index, setIndex] = useState(0);
-    const studyResult = useSelector(state => state.studyResult);
+    const {studyResult} = useSelector(state => state.studyProgress);
     const slidingCallback = useCallback((word, result, isFinalAnswer) => {
-        let wordResult = {};
-        wordResult[word] = result
-        dispatch(updateStudyResult(wordResult));
+        studyResult[word] = result
+        dispatch(updateStudyResult(studyResult));
         dispatch(updateSlidingStatus(result !== 0));
 
         if(isFinalAnswer){
+            
+            if(index + 1 >= cards.length){
+                showResult();
+                return;
+            }
+
             setIndex(index+1);
             dispatch(updateSlidingStatus(false));
         }
@@ -28,6 +34,10 @@ function Flashcards({cards}){
             count = studyResult[word] === result ? count + 1 : count;
         });
         return count;
+    }
+
+    const showResult = () => {
+        dispatch(setScreen(RESULT_SCREEN))
     }
 
     if(index >= cards.length){

@@ -3,27 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './App.css';
 import { getCardDecks } from '../actions';
+import { FLASHCARD_SCREEN, DECK_SCREEN, RESULT_SCREEN } from '../types';
 import CardDecks from './deck-screen/CardDecks';
 import Flashcards from './flashcard-screen/Flashcards';
+import Result from './result-screen/Result';
 
 const App = () => {
   
   const dispatch = useDispatch();
-  const { selectDeck, decks, isSliding, studyComplete} = useSelector(state => state);
+  const { selectDeck, selectCards, decks, isSliding, currentScreen, studyResult} = useSelector(state => {
+    console.log(state.studyProgress);
+    return state.studyProgress
+  });
 
   useEffect(() => {
     dispatch(getCardDecks());
   }, [])
 
   const renderScreen = () => {
-    if(selectDeck){
-      return <Flashcards cards={selectDeck.words}></Flashcards>
-    }
-    else if(studyComplete){
-      
-    }
-    else{
-      return <CardDecks data={decks}></CardDecks>
+    switch(currentScreen){
+      case DECK_SCREEN:
+        return <CardDecks data={decks}></CardDecks>
+      case FLASHCARD_SCREEN:
+        return <Flashcards cards={selectCards}></Flashcards>
+      case RESULT_SCREEN:
+        return <Result result={studyResult} cards={selectDeck ? selectDeck.words : []}></Result>
     }
   }
 
