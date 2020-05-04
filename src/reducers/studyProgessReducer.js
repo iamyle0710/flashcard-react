@@ -14,7 +14,7 @@ let initialState = {
     selectCards : [],
     studyResult : {},
     isSliding : false,
-    currentScreen : RESULT_SCREEN
+    currentScreen : DECK_SCREEN
 };
 
 const studyProgressReducer = (state = initialState, action) => {
