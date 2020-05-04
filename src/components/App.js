@@ -4,26 +4,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import { getCardDecks } from '../actions';
 import CardDecks from './deck-screen/CardDecks';
+import Flashcards from './flashcard-screen/Flashcards';
 
 const App = () => {
   
   const dispatch = useDispatch();
-  const decks = useSelector(state => {
-    console.log(state);
-    return state.decks
-  });
+  const { selectDeck, decks, isSliding, studyComplete} = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getCardDecks());
-  }, [decks])
+  }, [])
+
+  const renderScreen = () => {
+    if(selectDeck){
+      return <Flashcards cards={selectDeck.words}></Flashcards>
+    }
+    else if(studyComplete){
+      
+    }
+    else{
+      return <CardDecks data={decks}></CardDecks>
+    }
+  }
 
   return (
-    <div className="App">
-      <CardDecks data={decks}></CardDecks>
-    </div>
+    <div className="App" style={{backgroundColor : isSliding ? "#97b7b7" : "#d0e6df"}}>
+      {renderScreen()}
+    </div>  
   );
-  
 }
 
-export default App;
+export default App
 
