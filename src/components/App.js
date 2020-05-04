@@ -11,7 +11,7 @@ import Result from './result-screen/Result';
 const App = () => {
   
   const dispatch = useDispatch();
-  const { selectDeck, decks, isSliding, currentScreen, studyResult} = useSelector(state => {
+  const { selectDeck, selectCards, decks, isSliding, currentScreen, studyResult} = useSelector(state => {
     console.log(state.studyProgress);
     return state.studyProgress
   });
@@ -25,9 +25,9 @@ const App = () => {
       case DECK_SCREEN:
         return <CardDecks data={decks}></CardDecks>
       case FLASHCARD_SCREEN:
-        return <Flashcards cards={selectDeck.words}></Flashcards>
+        return <Flashcards cards={selectCards}></Flashcards>
       case RESULT_SCREEN:
-        return <Result result={studyResult}></Result>
+        return <Result result={studyResult} cards={selectDeck ? selectDeck.words : []}></Result>
     }
   }
 

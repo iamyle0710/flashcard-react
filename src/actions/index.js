@@ -2,6 +2,7 @@
 import { FLASHCARD_DECKS } from '../data';
 import { GET_CARD_DECKS, 
         SELECT_DECK, 
+        SET_REVIEW_WORDS,
         UPDATE_STUDY_RESULT, 
         UPDATE_SLIDING_STATUS, 
         SET_SCREEN 
@@ -24,11 +25,25 @@ export const getCardDecks = () => {
     }
 }
 
+export const setScreen = (screen) => {
+    return {
+        type : SET_SCREEN,
+        payload : screen
+    }
+}
+
 export const selectCardDeck = (deck) => {
     // console.log("actioned called : ", deck)
     return {
         type : SELECT_DECK,
         payload : deck
+    }
+}
+
+export const setReviewWords = (words) => {
+    return {
+        type : SET_REVIEW_WORDS,
+        payload : words
     }
 }
 
@@ -49,9 +64,4 @@ export const updateSlidingStatus = (status) => {
     }
 }
 
-export const setScreen = (screen) => {
-    return {
-        type : SET_SCREEN,
-        payload : screen
-    }
-}
+
