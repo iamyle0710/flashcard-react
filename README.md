@@ -12,8 +12,8 @@
     - `actions`: actions used to update the states of the application
     - `components`: components to render deck menu, flashcards and result
     - `reducers`: reducer to contain the state of the application
-    - `data.js`: flashcard data
-    - `types.js`: constant types used as mapping between application and redux
+    - `data.js`: flashcard constant data
+    - `types.js`: constant types used as mapping among actions, application and reducers
     - `index.js`: start point of the application
 
 ## Reference 
