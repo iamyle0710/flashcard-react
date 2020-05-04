@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { DECK_SCREEN, GET_CARD_DECKS, SELECT_DECK, UPDATE_STUDY_RESULT, UPDATE_SLIDING_STATUS, SET_SCREEN} from '../types';
+import { DECK_SCREEN, RESULT_SCREEN, GET_CARD_DECKS, SELECT_DECK, UPDATE_STUDY_RESULT, UPDATE_SLIDING_STATUS, SET_SCREEN} from '../types';
 
 const initialState = {
     decks : [],
     selectDeck : null,
     studyResult : {},
     isSliding : false,
-    currentScreen : DECK_SCREEN
+    currentScreen : RESULT_SCREEN
 };
 
 const cardDecksReducer = (decks = initialState.decks, action) => {
