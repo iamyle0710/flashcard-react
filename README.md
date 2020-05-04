@@ -9,7 +9,7 @@
 
 ## Code Description
 - `src`: 
-    - `actions`: The MenuScreen object represents the menu screen of the application. From here, users can choose a flashcard deck to review.
+    - `actions`: actions used to update the states of the application
     - `components`: components to render deck menu, flashcards and result
     - `reducers`: reducer to contain the state of the application
     - `data.js`: flashcard data
