@@ -12,8 +12,8 @@ const App = () => {
   
   const dispatch = useDispatch();
   const { selectDeck, decks, isSliding, currentScreen, studyResult} = useSelector(state => {
-    console.log(state);
-    return state
+    console.log(state.studyProgress);
+    return state.studyProgress
   });
 
   useEffect(() => {

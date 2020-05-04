@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { selectCardDeck, setScreen} from '../../actions';
+import { selectCardDeck, updateStudyResult, setScreen} from '../../actions';
 import { FLASHCARD_SCREEN } from '../../types';
 import './CardDeck.css';
 

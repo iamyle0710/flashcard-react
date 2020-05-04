@@ -10,11 +10,10 @@ function Flashcards({cards}){
 
     const dispatch = useDispatch();
     const [index, setIndex] = useState(0);
-    const studyResult = useSelector(state => state.studyResult);
+    const {studyResult} = useSelector(state => state.studyProgress);
     const slidingCallback = useCallback((word, result, isFinalAnswer) => {
-        let wordResult = {};
-        wordResult[word] = result
-        dispatch(updateStudyResult(wordResult));
+        studyResult[word] = result
+        dispatch(updateStudyResult(studyResult));
         dispatch(updateSlidingStatus(result !== 0));
 
         if(isFinalAnswer){
