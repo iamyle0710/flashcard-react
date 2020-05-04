@@ -1,6 +1,11 @@
 
 import { FLASHCARD_DECKS } from '../data';
-import { GET_CARD_DECKS, SELECT_DECK, UPDATE_STUDY_RESULT, UPDATE_SLIDING_STATUS } from './types';
+import { GET_CARD_DECKS, 
+        SELECT_DECK, 
+        UPDATE_STUDY_RESULT, 
+        UPDATE_SLIDING_STATUS, 
+        SET_SCREEN 
+} from '../types';
 
 export const getCardDecks = () => {
     // console.log("getCardDecks called");
@@ -41,5 +46,12 @@ export const updateSlidingStatus = (status) => {
     return {
         type : UPDATE_SLIDING_STATUS,
         payload : status
+    }
+}
+
+export const setScreen = (screen) => {
+    return {
+        type : SET_SCREEN,
+        payload : screen
     }
 }

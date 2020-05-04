@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { GET_CARD_DECKS, SELECT_DECK, UPDATE_STUDY_RESULT, UPDATE_SLIDING_STATUS} from '../actions/types';
+import { DECK_SCREEN, GET_CARD_DECKS, SELECT_DECK, UPDATE_STUDY_RESULT, UPDATE_SLIDING_STATUS, SET_SCREEN} from '../types';
 
 const initialState = {
     decks : [],
     selectDeck : null,
-    studyComplete : false,
     studyResult : {},
-    isSliding : false
+    isSliding : false,
+    currentScreen : DECK_SCREEN
 };
 
 const cardDecksReducer = (decks = initialState.decks, action) => {
@@ -51,9 +51,19 @@ const slidingStatusReducer = (status = initialState.isSliding, action) => {
     }
 }
 
+const setCurrentScreenReducer = (screen = initialState.currentScreen, action) => {
+    switch(action.type){
+        case SET_SCREEN:
+            return action.payload;
+        default:
+            return screen;
+    }
+}
+
 export default combineReducers({
     decks : cardDecksReducer,
     selectDeck : selectDeckReducer,
     studyResult : studyResultReducer,
-    isSliding : slidingStatusReducer
+    isSliding : slidingStatusReducer,
+    currentScreen : setCurrentScreenReducer
 });
